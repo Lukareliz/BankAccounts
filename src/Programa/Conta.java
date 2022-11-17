@@ -42,6 +42,7 @@ public class Conta {
 		this.saldo = saldo;
 	}
 	
+	//Método ToString//
 	public String toString() {
 		return "\nNúmero da conta: " + this.getNumeroConta() + 
 				"\nNome: " + this.pessoa.getNome() + 
@@ -51,7 +52,38 @@ public class Conta {
 				"\n";
 	}
 	
+	//Método Depositar//
+	public void Depositar(Double valor) {
+		//Se valor a depositar é maior que zero, ele irá fazer a somatória entre o valor e o saldo//
+		if(valor > 0) {
+			setSaldo(getSaldo() + valor);
+			System.out.println("Seu depósito foi realizado com sucesso!");
+		} else {
+			System.out.println("Não foi possível realizar o depósito!");
+		}
+	}
 	
+	//Método Sacar//
+	public void Sacar(Double valor){
+		//Se o valor a sacar for maior que zero e saldo for maior ou igual ao valor então ele irá subitrair valor de saldo// 
+		if(valor > 0 && this.getSaldo() >= valor) {
+			setSaldo(getSaldo() - valor);
+			System.out.println("Saque efetuado com sucesso!");
+		}else {
+			System.out.println("Saldo insuficiente!");
+		}
+	}
+	
+	//Método Transferir//
+	public void Transferir(Conta contaParaDeposito, Double valor){
+		if(valor > 0 && this.getSaldo() >= valor) {
+			setSaldo(getSaldo() - valor);
+			contaParaDeposito.saldo = contaParaDeposito.getSaldo() + valor;
+			System.out.println("Transferência realizada com sucesso!");
+		}else {
+			System.out.println("Não foi possível realizar a transferência!");
+		}
+	}
 	
 	
 }
