@@ -76,6 +76,7 @@ public class Conta {
 	
 	//Método Transferir//
 	public void Transferir(Conta contaParaDeposito, Double valor){
+		//Se o valor for maior que zero e saldo for maior ou igual valor, então saldo da conta subtrai valor e saldo da contaParaDeposito soma o valor//
 		if(valor > 0 && this.getSaldo() >= valor) {
 			setSaldo(getSaldo() - valor);
 			contaParaDeposito.saldo = contaParaDeposito.getSaldo() + valor;
